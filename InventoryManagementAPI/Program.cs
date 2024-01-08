@@ -3,20 +3,20 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agrega la configuración de DbContext aquí
+// NEW Add DbContext configuration here
 builder.Services.AddDbContext<InventoryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryDatabase")));
 
-// Agrega los demás servicios al contenedor.
+// Add other services to the container.
 builder.Services.AddControllers();
 
-// Configuración de Swagger/OpenAPI
+// Swagger/OpenAPI configuration
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configura la tubería de solicitudes HTTP.
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
