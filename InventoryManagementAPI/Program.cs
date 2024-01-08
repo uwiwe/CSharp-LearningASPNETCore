@@ -1,15 +1,22 @@
+using InventoryManagementAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Agrega la configuración de DbContext aquí
+builder.Services.AddDbContext<InventoryContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryDatabase")));
 
+// Agrega los demás servicios al contenedor.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configuración de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configura la tubería de solicitudes HTTP.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
