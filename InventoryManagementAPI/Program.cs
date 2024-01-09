@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // NEW Add DbContext configuration here
 builder.Services.AddDbContext<InventoryContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryDatabase")));
+    options.UseMySql(builder.Configuration.GetConnectionString("InventoryDatabase"),
+    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("InventoryDatabase"))));
 
 // Add other services to the container.
 builder.Services.AddControllers();
