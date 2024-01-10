@@ -29,7 +29,7 @@
         public int ProductId { get; set; }
         public int QuantityChanged { get; set; }
         public DateTime DateOfChange { get; set; }
-        public string ChangedBy { get; set; } // Usuario que realizó el cambio
+        public string ChangedBy { get; set; } // Usuario que realizó el cambi
 
         public Product Product { get; set; }
     }
